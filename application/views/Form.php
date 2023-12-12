@@ -55,7 +55,7 @@
             <h1>Tambah Data Baru</h1>
         </div>
         <div class="form-data">
-            <form action="">
+            <form action="<?php echo base_url() . 'master/tambah_aksi'; ?>" method="post">
                 <table>
                     <tr>
                         <td>NIM</td>
@@ -64,113 +64,98 @@
                     <tr>
                     <tr>
                         <td>No. KRS</td>
-                        <td> : <input type="text" name="krs" size="50"></td>
+                        <td> : <input type="text" name="no_krs" size="50"></td>
                     </tr>
                     <tr>
                         <td>Kode Matkul</td>
-                        <td> : <input type="text" name="kode" size="50"></td>
+                        <td> : <input type="text" name="kode_mtk" size="50"></td>
+                    </tr>
+                    <tr>
+                        <td>No. Ujian Her</td>
+                        <td> : <input type="text" name="no_kpuh" size="50"></td>
                     </tr>
                     <tr>
                         <td>Nilai UTS</td>
-                        <td> : <input type="number" name="uts" size="50"></td>
+                        <td> : <input type="number" name="nilai_uts" size="50"></td>
                     </tr>
                     <tr>
                         <td>Nilai UAS</td>
-                        <td> : <input type="number" name="uas" size="50"></td>
+                        <td> : <input type="number" name="nilai_uas" size="50"></td>
+                    </tr>
+                    <tr>
+                        <td>Total Nilai</td>
+                        <td> : <input type="number" name="total_nilai" size="50"></td>
+                    </tr>
+                    <tr>
+                        <td>Nilai Absen</td>
+                        <td> : <input type="number" name="nilai_absen" size="50"></td>
+                    </tr>
+                    <tr>
+                        <td>Nilai Tugas</td>
+                        <td> : <input type="number" name="nilai_tugas" size="50"></td>
                     </tr>
                     <tr>
                     <tr>
                         <td>Grade 1</td>
-                        <td> : 
-                            <input type="radio" name="jeniskel" value="A"> A
-                            <input type="radio" name="jeniskel" value="B"> B
-                            <input type="radio" name="jeniskel" value="C"> C
-                            <input type="radio" name="jeniskel" value="D"> D
-                        </td>
+                        <td> : <input type="number" name="grade1" size="50"></td>
                     </tr>
                     <tr>
-                        <td>Grade 2</td>
-                        <td> :                             
-                            <input type="radio" name="jeniskel" value="A"> A
-                            <input type="radio" name="jeniskel" value="B"> B
-                            <input type="radio" name="jeniskel" value="C"> C
-                            <input type="radio" name="jeniskel" value="D"> D
+                        <td>Grade 2</td>                  
+                        <td> : <input type="number" name="grade2" size="50"></td>
                     </tr>
                     <tr>
                         <td>Grade 3</td>
-                        <td> :
-                            <input type="radio" name="jeniskel" value="A"> A
-                            <input type="radio" name="jeniskel" value="B"> B
-                            <input type="radio" name="jeniskel" value="C"> C
-                            <input type="radio" name="jeniskel" value="D"> D
+                        <td> : <input type="number" name="grade3" size="50"></td>
                     </tr>
                     <tr>
                         <td>Grade 4</td>
-                        <td> : 
-                            <input type="radio" name="jeniskel" value="A"> A
-                            <input type="radio" name="jeniskel" value="B"> B
-                            <input type="radio" name="jeniskel" value="C"> C
-                            <input type="radio" name="jeniskel" value="D"> D
+                        <td> : <input type="number" name="grade4" size="50"></td>
                     </tr>
                     <tr>
                     <tr>
                         <td>Grade 5</td>
-                        <td> : 
-                            <input type="radio" name="jeniskel" value="A"> A
-                            <input type="radio" name="jeniskel" value="B"> B
-                            <input type="radio" name="jeniskel" value="C"> C
-                            <input type="radio" name="jeniskel" value="D"> D
+                        <td> : <input type="number" name="grade5" size="50"></td>
                     </tr>
                     <tr>
                         <td>Grade 6</td>
-                        <td> :                             
-                            <input type="radio" name="jeniskel" value="A"> A
-                            <input type="radio" name="jeniskel" value="B"> B
-                            <input type="radio" name="jeniskel" value="C"> C
-                            <input type="radio" name="jeniskel" value="D"> D
+                        <td> : <input type="number" name="grade6" size="50"></td>
                     </tr>
                     <tr>
                         <td>Grade Akhir</td>
-                        <td> : 
-                            <input type="radio" name="jeniskel" value="A"> A
-                            <input type="radio" name="jeniskel" value="B"> B
-                            <input type="radio" name="jeniskel" value="C"> C
-                            <input type="radio" name="jeniskel" value="D"> D
+                        <td> : <input type="number" name="grade_akhir" size="50"></td>
                     </tr>
-                    <tr>
                     <tr>
                         <td>Nilai Temu</td>
-                        <td> : <input type="number" name="temu" size="50"></td>
+                        <td> : <input type="number" name="nilai_temu" size="50"></td>
                     </tr>
                     <tr>
-                    <tr>
                         <td>Kelompok Praktek</td>
-                        <td> : <input type="text" name="praktek" size="50"></td>
+                        <td> : <input type="text" name="kel_praktek" size="50"></td>
                     </tr>
                     <tr>
                         <td>Nilai Mutu</td>
-                        <td> : <input type="number" name="mutu" size="50"></td>
+                        <td> : <input type="number" name="nilai_mutu" size="50"></td>
                     </tr>
                     <tr>
                         <td>Total Pra HER</td>
-                        <td> : <input type="number" name="toHER" size="50"></td>
+                        <td> : <input type="number" name="total_pra_her" size="50"></td>
                     </tr>
                     <tr>
                         <td>Grade Pra HER</td>
-                        <td> : <input type="number" name="gHER" size="50"></td>
+                        <td> : <input type="number" name="grade_pra_her" size="50"></td>
                     </tr>
                     <tr>
                     <tr>
                         <td>Kelompok Praktek X</td>
-                        <td> : <input type="text" name="praX" size="50"></td>
+                        <td> : <input type="text" name="kel_praktek_x" size="50"></td>
                     </tr>
                     <tr>
                         <td>NIM X</td>
-                        <td> : <input type="text" name="nimX" size="50"></td>
+                        <td> : <input type="text" name="nim_x" size="50"></td>
                     </tr>
                     <tr>
                         <td>Kode Lokal X</td>
-                        <td> : <input type="text" name="lokalX" size="50"></td>
+                        <td> : <input type="text" name="kode_lokal_x" size="50"></td>
                     </tr>
                     <tr>
                         <td>Aktif</td>
@@ -187,7 +172,7 @@
                     </tr>
                     <tr>
                         <td>Nilai HER</td>
-                        <td> : <input type="number" name="gAkhir" size="50"></td>
+                        <td> : <input type="number" name="nilai_her" size="50"></td>
                     </tr>
                     <tr>
                         <td>Cek</td>
@@ -199,7 +184,7 @@
                     </tr>
                     <tr>
                         <td>Periode Dikti</td>
-                        <td> : <input type="text" name="dikti" size="50"></td>
+                        <td> : <input type="text" name="periode_dikti" size="50"></td>
                     </tr>
                     <tr>
                         <td></td>

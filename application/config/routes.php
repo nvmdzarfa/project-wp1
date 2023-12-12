@@ -56,4 +56,4 @@ $route['login'] = 'master/login';
 $route['register'] = 'master/register';
 $route['utama'] = 'master/utama';
 $route['dashboard'] = 'master/dashboard';
-$route['form'] = 'master/form';
+$route['tambah'] = 'master/tambah';

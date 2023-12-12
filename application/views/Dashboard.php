@@ -74,7 +74,7 @@
         
         <div class="judul">
             <h1>Data Penilaian</h1>
-            <p><a href="form">Tambah Data</a></p></div>
+            <p><a href="tambah">Tambah Data</a></p></div>
         <div class="table">
 
             <table>
@@ -84,6 +84,7 @@
                         <th>NIM</th>
                         <th>No. KRS</th>
                         <th>Kode Matakuliah</th>
+                        <th>No. Ujian Her</th>
                         <th>Nilai UTS</th>
                         <th>Nilai Uas</th>
                         <th>Total Nilai</th>
@@ -100,14 +101,14 @@
                         <th>Kelompok Praktek</th>
                         <th>Nilai Mutu</th>
                         <th>Total Pra HER</th>
-                        <th>Graade Pra HER</th>
+                        <th>Grade Pra HER</th>
                         <th>Kelompok Praktek X</th>
                         <th>NIM X</th>
                         <th>Kode Lokal X</th>
                         <th>Aktif</th>
                         <th>Entri</th>
                         <th>Unggulan</th>
-                        <th>Niali Her</th>
+                        <th>Nilai Her</th>
                         <th>Cek</th>
                         <th>Minat</th>
                         <th>Periode Dikti</th>
@@ -115,49 +116,54 @@
 
                     </tr>
                 </thead>
-
+                <?php
+                    $no = 1;
+                    foreach ($nilai as $n) {
+                ?>
                 <tbody>
                     <tr>
-                        <td>1.</td>
-                        <td>Salsa Nur Aini</td>
-                        <td>Salsa Nur Aini</td>
-                        <td>Salsa Nur Aini</td>
-                        <td>Salsa Nur Aini</td>
-                        <td>Salsa Nur Aini</td>
-                        <td>Salsa Nur Aini</td>
-                        <td>Salsa Nur Aini</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><?php echo $no++ ?></td>
+                        <td><?php echo $n->nim ?></td>
+                        <td><?php echo $n->no_krs ?></td>
+                        <td><?php echo $n->kode_mtk ?></td>
+                        <td><?php echo $n->no_kpuh ?></td>
+                        <td><?php echo $n->nilai_uts ?></td>
+                        <td><?php echo $n->nilai_uas ?></td>
+                        <td><?php echo $n->total_nilai ?></td>
+                        <td><?php echo $n->nilai_absen ?></td>
+                        <td><?php echo $n->nilai_tugas ?></td>
+                        <td><?php echo $n->grade1 ?></td>
+                        <td><?php echo $n->grade2 ?></td>
+                        <td><?php echo $n->grade3 ?></td>
+                        <td><?php echo $n->grade4 ?></td>
+                        <td><?php echo $n->grade5 ?></td>
+                        <td><?php echo $n->grade6 ?></td>
+                        <td><?php echo $n->grade_akhir ?></td>
+                        <td><?php echo $n->nilai_temu ?></td>
+                        <td><?php echo $n->kel_praktek ?></td>
+                        <td><?php echo $n->nilai_mutu ?></td>
+                        <td><?php echo $n->total_pra_her ?></td>
+                        <td><?php echo $n->grade_pra_her ?></td>
+                        <td><?php echo $n->kel_praktek_x ?></td>
+                        <td><?php echo $n->nim_x ?></td>
+                        <td><?php echo $n->kode_lokal_x ?></td>
+                        <td><?php echo $n->aktif ?></td>
+                        <td><?php echo $n->entri ?></td>
+                        <td><?php echo $n->unggulan ?></td>
+                        <td><?php echo $n->nilai_her ?></td>
+                        <td><?php echo $n->cek ?></td>
+                        <td><?php echo $n->minat ?></td>
+                        <td><?php echo $n->periode_dikti ?></td>
                         <td>
                             <span class="Action-btn">
-                                <a href="#">Edit</a>
-                                <a href="#">Hapus</a>
+                                <a href="edit">Edit</a>
+                                <a href="hapus">Hapus</a>
                                 <a href="#">Download</a>
                             </span>
                         </td>
 
                     </tr>
+                <?php } ?>
                 </tbody>
             </table>
         </div>

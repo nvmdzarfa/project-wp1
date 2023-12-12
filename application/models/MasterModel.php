@@ -2,39 +2,34 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MasterModel extends CI_Model {
-    // Constructor
     public function __construct() {
         parent::__construct();
         $this->load->database();
+
+        if (!$this->db->conn_id) {
+            die("Database Connection no Successful");
+        }
     }
 
-    // Function to save master data
-    public function save_master_data($data) {
-        return $this->db->insert('master_data', $data);
+    public function tampilData() {
+        return $this->db->get('nilai');
     }
 
-    // Function to get master data
-    public function get_master_data($id) {
-        $query = $this->db->get_where('master_data', array('id' => $id));
-        return $query->row_array();
+    public function simpanNilai($data = null) {
+        $this->db->insert('nilai', $data);
     }
 
-    // Function to update master data
-    public function update_master_data($id, $data) {
-        $this->db->where('id', $id);
-        return $this->db->update('master_data', $data);
+    public function editData($where, $table) {
+        return $this->db->get_where($table, $where);
     }
 
-    // Function to delete master data
-    public function delete_master_data($id) {
-        $this->db->where('id', $id);
-        return $this->db->delete('master_data');
+    public function updateNilai($where = null, $data = null) {
+        $this->db->update('nilai', $data, $where);
     }
 
-    // Function to get all master data
-    public function get_all_master_data() {
-        $query = $this->db->get('master_data');
-        return $query->result_array();
+    public function hapusData($where, $table) {
+        $this->db->where($where);
+        $this->db->delete($table);
     }
 }
 ?>

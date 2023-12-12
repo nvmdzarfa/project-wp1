@@ -7,7 +7,10 @@
                 $username = $this->input->post('username');
                 $password = $this->input->post('password');
 
-                if($this->validateCredentials($username, $password)) {
+                $user = $this->MasterModel->validateUser($username, $password);
+
+                if($user) {
+                // Store user data in session or perform any other actions
                     redirect('dashboard');
                 } else {
                     echo "Invalid username and password";
@@ -22,7 +25,30 @@
         }
     
         public function register() {
-            $this->load->view('register');
+            $this->load->library('form_validation');
+    
+            // Set validation rules
+            $this->form_validation->set_rules('username', 'Username', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+
+            if ($this->form_validation->run() == false) {
+                $this->load->view('register');
+            } else {
+                $data = array(
+                    'username' => $this->input->post('username'),
+                    'email' => $this->input->post('email'),
+                    'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT)
+                );
+
+                $this->load->model('MasterModel');
+
+                if ($this->MasterModel->registerUser($data)) {
+                    echo '<script>alert("Registrasi Sukses! Sekarang kamu bisa login."); window.location.href = "' . site_url('master/login') . '";</script>';
+                } else {
+                    echo '<script>alert("Registrasi gagal! Silakan Coba lagi.");</script>';
+                }
+            }
         }
 
         public function utama() {

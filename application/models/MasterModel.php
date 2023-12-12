@@ -31,5 +31,21 @@ class MasterModel extends CI_Model {
         $this->db->where($where);
         $this->db->delete($table);
     }
+
+    public function registerUser($data) {
+        return $this->db->insert('account', $data);
+    }
+
+    public function validateUser($username, $password) {
+        $user = $this->db->get_where('account', array('username' => $username))->row();
+
+        if ($user) {
+            if (password_verify($password, $user->password)) {
+                return $user;
+            }
+        }
+
+        return false;
+    }
 }
 ?>

@@ -57,3 +57,4 @@ $route['register'] = 'master/register';
 $route['utama'] = 'master/utama';
 $route['dashboard'] = 'master/dashboard';
 $route['tambah'] = 'master/tambah';
+$route['search'] = 'master/search';

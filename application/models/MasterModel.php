@@ -11,7 +11,10 @@ class MasterModel extends CI_Model {
         }
     }
 
-    public function tampilData() {
+    public function tampilData($search = null) {
+        if($search) {
+            $this->db->like('nim', $search);
+        }
         return $this->db->get('nilai');
     }
 
@@ -23,8 +26,9 @@ class MasterModel extends CI_Model {
         return $this->db->get_where($table, $where);
     }
 
-    public function updateNilai($where = null, $data = null) {
-        $this->db->update('nilai', $data, $where);
+    public function updateNilai($where, $data, $table) {
+        $this->db->where($where);
+        $this->db->update($table, $data);
     }
 
     public function hapusData($where, $table) {
@@ -32,7 +36,25 @@ class MasterModel extends CI_Model {
         $this->db->delete($table);
     }
 
+    public function get_search_results($keyword) {
+        $this->db->select('*');
+        $this->db->from('nilai');
+
+        if($keyword !== null) {
+            $keyword = $this->db->escape_like_str($keyword);
+            $this->db->like('nim', $keyword);
+            $this->db->or_like('nim_x', $keyword);
+        } else  {
+            return array();
+        }
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function registerUser($data) {
+        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+        
         return $this->db->insert('account', $data);
     }
 
@@ -46,6 +68,10 @@ class MasterModel extends CI_Model {
         }
 
         return false;
+    }
+
+    public function getUserByUsername($username) {
+        return $this->db->get_where('account', array('username' => $username))->row();
     }
 }
 ?>

@@ -15,14 +15,17 @@
         <div class="wrapper">
             <form action="utama" method='post'>
                 <h1>Login</h1>
+                <?= $this->session->flashdata('message'); ?>
                 <div class="input-box">
-                    <input type="text" placeholder="Username" required>
+                    <input type="text" name="username" placeholder="Username" value="<?= set_value('username'); ?>" required>
                     <i class='bx bxs-user' ></i>
+                    <?= form_error('username', '<small class="text-danger">', '</small>'); ?>
                 </div>
 
                 <div class="input-box">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                     <i class='bx bxs-lock-alt'></i>
+                    <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
                 </div>
 
                 <div class="remember-forgot">

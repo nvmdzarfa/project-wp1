@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Login</title>
+    <title>Search Data Penilaian</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -60,7 +60,7 @@
                 <div class="search">
                     <form action="<?php echo base_url('search'); ?>" method="post">
                         <label>
-                            <input type="text" name="search" placeholder="Search here" value="<?php echo set_value('search'); ?>">
+                            <input type="text" placeholder="Search here" value="<?php echo set_value('search'); ?>">
                             <i class='bx bx-search' ></i>
                         </label>
                     </form>
@@ -75,7 +75,7 @@
         <!-- Bagian Data -->
         
         <div class="judul">
-            <h1>Data Penilaian</h1>
+            <h1>Search Data Penilaian</h1>
             <p><a href="tambah">Tambah Data</a></p></div>
         <div class="table">
 
@@ -118,54 +118,56 @@
 
                     </tr>
                 </thead>
-                <?php
-                    $no = 1;
-                    foreach($nilai as $n) {
-                ?>
+                <?php if(isset($nilai) && (is_array($nilai) || is_object($nilai))) : ?>
+                    <?php $no = 1; ?>
+                    <?php foreach($nilai as $search_show) : ?>
                 <tbody>
                     <tr>
-                        <td><?php echo $no++ ?></td>
-                        <td><?php echo $n->nim ?></td>
-                        <td><?php echo $n->no_krs ?></td>
-                        <td><?php echo $n->kode_mtk ?></td>
-                        <td><?php echo $n->no_kpuh ?></td>
-                        <td><?php echo $n->nilai_uts ?></td>
-                        <td><?php echo $n->nilai_uas ?></td>
-                        <td><?php echo $n->total_nilai ?></td>
-                        <td><?php echo $n->nilai_absen ?></td>
-                        <td><?php echo $n->nilai_tugas ?></td>
-                        <td><?php echo $n->grade1 ?></td>
-                        <td><?php echo $n->grade2 ?></td>
-                        <td><?php echo $n->grade3 ?></td>
-                        <td><?php echo $n->grade4 ?></td>
-                        <td><?php echo $n->grade5 ?></td>
-                        <td><?php echo $n->grade6 ?></td>
-                        <td><?php echo $n->grade_akhir ?></td>
-                        <td><?php echo $n->nilai_temu ?></td>
-                        <td><?php echo $n->kel_praktek ?></td>
-                        <td><?php echo $n->nilai_mutu ?></td>
-                        <td><?php echo $n->total_pra_her ?></td>
-                        <td><?php echo $n->grade_pra_her ?></td>
-                        <td><?php echo $n->kel_praktek_x ?></td>
-                        <td><?php echo $n->nim_x ?></td>
-                        <td><?php echo $n->kode_lokal_x ?></td>
-                        <td><?php echo $n->aktif ?></td>
-                        <td><?php echo $n->entri ?></td>
-                        <td><?php echo $n->unggulan ?></td>
-                        <td><?php echo $n->nilai_her ?></td>
-                        <td><?php echo $n->cek ?></td>
-                        <td><?php echo $n->minat ?></td>
-                        <td><?php echo $n->periode_dikti ?></td>
+                        <td><?php echo $no++; ?></td>
+                        <td><?php echo $search_show->nim ?></td>
+                        <td><?php echo $search_show->no_krs ?></td>
+                        <td><?php echo $search_show->kode_mtk ?></td>
+                        <td><?php echo $search_show->no_kpuh ?></td>
+                        <td><?php echo $search_show->nilai_uts ?></td>
+                        <td><?php echo $search_show->nilai_uas ?></td>
+                        <td><?php echo $search_show->total_nilai ?></td>
+                        <td><?php echo $search_show->nilai_absen ?></td>
+                        <td><?php echo $search_show->nilai_tugas ?></td>
+                        <td><?php echo $search_show->grade1 ?></td>
+                        <td><?php echo $search_show->grade2 ?></td>
+                        <td><?php echo $search_show->grade3 ?></td>
+                        <td><?php echo $search_show->grade4 ?></td>
+                        <td><?php echo $search_show->grade5 ?></td>
+                        <td><?php echo $search_show->grade6 ?></td>
+                        <td><?php echo $search_show->grade_akhir ?></td>
+                        <td><?php echo $search_show->nilai_temu ?></td>
+                        <td><?php echo $search_show->kel_praktek ?></td>
+                        <td><?php echo $search_show->nilai_mutu ?></td>
+                        <td><?php echo $search_show->total_pra_her ?></td>
+                        <td><?php echo $search_show->grade_pra_her ?></td>
+                        <td><?php echo $search_show->kel_praktek_x ?></td>
+                        <td><?php echo $search_show->nim_x ?></td>
+                        <td><?php echo $search_show->kode_lokal_x ?></td>
+                        <td><?php echo $search_show->aktif ?></td>
+                        <td><?php echo $search_show->entri ?></td>
+                        <td><?php echo $search_show->unggulan ?></td>
+                        <td><?php echo $search_show->nilai_her ?></td>
+                        <td><?php echo $search_show->cek ?></td>
+                        <td><?php echo $search_show->minat ?></td>
+                        <td><?php echo $search_show->periode_dikti ?></td>
                         <td>
                             <span class="Action-btn">
-                                 <?php echo anchor('master/edit/' . $n->nim, 'Edit'); ?> 
-                                <?php echo anchor('master/hapus/' . $n->nim, 'Delete'); ?>
+                                 <?php echo anchor('master/edit/' . $search_show->nim, 'Edit'); ?> 
+                                <?php echo anchor('master/hapus/' . $search_show->nim, 'Delete'); ?>
                                 <a href="<?php echo base_url('master/download'); ?>">Download</a>
                             </span>
                         </td>
 
                     </tr>
-                <?php } ?>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <p>No data found.</p>
+                <?php endif; ?>
                 </tbody>
             </table>
         </div>

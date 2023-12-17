@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Login</title>
+    <title>Registration</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,30 +13,29 @@
 <body>
     <section>
         <div class="wrapper">
-            <?php echo form_open('register'); ?>
-            <form method="post">
+            <form method="post" action="<?= base_url('auth/registration') ?>">
                 <h1>Registration</h1>
                 <div class="input-box">
-                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="text" name="name" placeholder="Full Name" value="<?= set_value('name') ?>">
                     <i class='bx bxs-user' ></i>
+                    <?= form_error('name', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="input-box">
-                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="email" name="email" placeholder="Email" value="<?= set_value('email') ?>">
                     <i class='bx bxs-envelope'></i>
+                    <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                 </div>
 
                 <div class="input-box">
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password">
                     <i class='bx bxs-lock-alt'></i>
                 </div>
 
                 <button type="submit" name="registerUser" class="btn">Register</button>
-                
-            <?php echo form_close(); ?>
 
                 <div class="link">
-                    <p>Already have an account? <a href="login">Login</a></p>
+                    <p>Already have an account? <a href="<?= base_url('auth'); ?>">Login</a></p>
                 </div>
             </form>
         </div>

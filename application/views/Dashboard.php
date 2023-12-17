@@ -24,7 +24,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="utama">
+                    <a href="master">
                         <span class="icon">
                             <i class='bx bx-home' ></i>
                         </span>
@@ -160,7 +160,7 @@
                             <span class="Action-btn">
                                  <?php echo anchor('master/edit/' . $n->nim, 'Edit'); ?> 
                                 <?php echo anchor('master/hapus/' . $n->nim, 'Delete'); ?>
-                                <a href="<?php echo base_url('master/download'); ?>">Download</a>
+                                <a href="<?php echo site_url('master/download/'.$n->nim); ?>">Download</a>
                             </span>
                         </td>
 

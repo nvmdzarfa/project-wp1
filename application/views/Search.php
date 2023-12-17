@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="dashboard">
                         <span class="icon">
                             <i class='bx bxs-dashboard' ></i>
                         </span>

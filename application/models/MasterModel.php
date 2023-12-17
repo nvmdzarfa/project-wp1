@@ -51,27 +51,5 @@ class MasterModel extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
-
-    public function registerUser($data) {
-        $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
-        
-        return $this->db->insert('account', $data);
-    }
-
-    public function validateUser($username, $password) {
-        $user = $this->db->get_where('account', array('username' => $username))->row();
-
-        if ($user) {
-            if (password_verify($password, $user->password)) {
-                return $user;
-            }
-        }
-
-        return false;
-    }
-
-    public function getUserByUsername($username) {
-        return $this->db->get_where('account', array('username' => $username))->row();
-    }
 }
 ?>

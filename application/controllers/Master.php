@@ -4,93 +4,26 @@
     class Master extends CI_Controller {
         public function __construct() {
             parent::__construct();
-            $this->load->library('form_validation');
-        }
-
-        public function login() {
-            $this->form_validation->set_rules('username', 'Username', 'trim|required');
-            $this->form_validation->set_rules('password', 'Password', 'trim|required');
-
-            if($this->form_validation->run() == false) {
-                $this->load->view('login');
-            } else {
-                $this->_login();
+            $this->load->library('form_validation', 'session');
+            if(!empty($_SESSION['username'])) {
+                redirect('dashboard');
             }
         }
-        
-        private function _login() {
-            $username = $this->input->post('username');
-            $password = $this->input->post('password');
 
-            $user = $this->db->get_where('account', ['username' => $username])->row_array();
-
-            if($user) {
-                if(password_verify($password, $user['password'])) {
-                    $data = [
-                        'username' => $user['username']
-                    ];
-                    $this->session->set_userdata($data);
-                    redirect('dashboard');
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Password salah!</div>');
-                    redirect('login');
-                }
-            }
+        public function index() {
+            $this->load->view('utama');
         }
 
         public function logout() {
-            $this->session->unset_userdata('username');
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil logout!</div>');
+            $data = ['username'];
+            $this->session->unset_userdata($data);
             redirect('login');
-        }
-
-        private function validateCredentials($username, $password) {
-            $this->load->model('MasterModel');
-
-            $user = $this->MasterModel->getUserByUsername($username);
-
-            if($user && password_verify($password, $user->password)) {
-                return true; // valid
-            }
-
-            return false; // tidak valid
-        }
-    
-        public function register() {
-            $this->load->library('form_validation');
-    
-            $this->form_validation->set_rules('username', 'Username', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-            $this->form_validation->set_rules('password', 'Password', 'required');
-
-            if ($this->form_validation->run() == false) {
-                $this->load->view('register');
-            } else {
-                $data = array(
-                    'username' => $this->input->post('username'),
-                    'email' => $this->input->post('email'),
-                    'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT)
-                );
-
-                $this->load->model('MasterModel');
-
-                if ($this->MasterModel->registerUser($data)) {
-                    echo '<script>alert("Registrasi Sukses! Sekarang kamu bisa login."); window.location.href = "' . site_url('login') . '";</script>';
-                } else {
-                    echo '<script>alert("Registrasi gagal! Silakan Coba lagi.");</script>';
-                }
-            }
-        }
-
-        public function utama() {
-            $this->load->view('utama');
         }
 
         public function dashboard() {
             $search = $this->input->get('search');
             $this->load->model('MasterModel');
             $data['nilai'] = $this->MasterModel->tampilData($search)->result();
-            // var_dump($data['nilai']);
             $this->load->view('dashboard', $data);
         }
         
@@ -269,13 +202,90 @@
             $this->load->view('search', $data);
         }
 
-        // public function download() {
-        //     $data = $this->db->get('nilai')->result();
+        public function download($nim) {
+            $data['nilai'] = $this->db->get_where('nilai', ['nim' => $nim])->result();
+            $nilai = $data['nilai'];
+            $file = fopen('php://output', 'w');
 
-        //     $file = fopen('php://output', 'w');
+            $header = array(
+                'NIM', 
+                'No KRS',
+                'Kode MTK',
+                'No. Ujian Her', 
+                'Nilai UTS', 
+                'Nilai UAS', 
+                'Total Nilai', 
+                'Nilai Absen', 
+                'Nilai Tugas', 
+                'Grade 1', 
+                'Grade 2', 
+                'Grade 3', 
+                'Grade 4', 
+                'Grade 5', 
+                'Grade 6', 
+                'Grade Akhir', 
+                'Nilai Temu', 
+                'Kelompok Praktek', 
+                'Nilai Mutu', 
+                'Total Pra HER', 
+                'Grade Pra HER', 
+                'Kelompok Praktek X', 
+                'NIM X', 
+                'Kode Lokal X', 
+                'Aktif', 
+                'Entri', 
+                'Unggulan', 
+                'Nilai Her', 
+                'Cek', 
+                'Minat', 
+                'Periode Dikti'
+            );
+            fputcsv($file, $header);
 
-        //     $header = array("")
-        // }
+            foreach ($nilai as $row) {
+                $newRow = array(
+                    $row->nim,
+                    $row->no_krs,
+                    $row->kode_mtk,
+                    $row->no_kpuh,
+                    $row->nilai_uts,
+                    $row->nilai_uas,
+                    $row->total_nilai,
+                    $row->nilai_absen,
+                    $row->nilai_tugas,
+                    $row->grade1,
+                    $row->grade2,
+                    $row->grade3,
+                    $row->grade4,
+                    $row->grade5,
+                    $row->grade6,
+                    $row->grade_akhir,
+                    $row->nilai_temu,
+                    $row->kel_praktek,
+                    $row->nilai_mutu,
+                    $row->total_pra_her,
+                    $row->grade_pra_her,
+                    $row->kel_praktek_x,
+                    $row->nim_x,
+                    $row->kode_lokal_x,
+                    $row->aktif,
+                    $row->entri,
+                    $row->unggulan,
+                    $row->nilai_her,
+                    $row->cek,
+                    $row->minat,
+                    $row->periode_dikti
+                );
+                fputcsv($file, $newRow);
+            }
+
+            $nama_file = 'Rekap Nilai.csv';
+
+            header("Content-type: application/csv");
+            header("Content-Disposition: attachment; filename=".$nama_file);
+
+            fclose($file);
+        }   
 
     }
     

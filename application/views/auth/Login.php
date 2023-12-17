@@ -13,29 +13,25 @@
 <body>
     <section>
         <div class="wrapper">
-            <form action="utama" method='post'>
+            <?= $this->session->flashdata('message'); ?>
+            <form action="<?= base_url('auth'); ?>" method="post" >
                 <h1>Login</h1>
-                <?= $this->session->flashdata('message'); ?>
                 <div class="input-box">
-                    <input type="text" name="username" placeholder="Username" value="<?= set_value('username'); ?>" required>
+                    <input type="text" name="email" placeholder="Email" value="<?= set_value('email'); ?>" >
                     <i class='bx bxs-user' ></i>
                     <?= form_error('username', '<small class="text-danger">', '</small>'); ?>
                 </div>
 
                 <div class="input-box">
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" >
                     <i class='bx bxs-lock-alt'></i>
                     <?= form_error('password', '<small class="text-danger">', '</small>'); ?>
-                </div>
-
-                <div class="remember-forgot">
-                    <a href="#">Forgot password?</a>
                 </div>
 
                 <button type="submit" class="btn">Login</button>
 
                 <div class="link">
-                    <p>Don't have an account? <a href="register">Register</a></p>
+                    <p>Don't have an account? <a href="<?= base_url('auth/registration');?>">Register</a></p>
                 </div>
             </form>
         </div> 

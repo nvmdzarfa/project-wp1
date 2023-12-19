@@ -76,15 +76,15 @@
                     </tr>
                     <tr>
                         <td>Nilai UTS</td>
-                        <td> : <input type="number" name="nilai_uts" size="50"></td>
+                        <td> : <input type="number" name="nilai_uts" id="nilai_uts" size="50"></td>
                     </tr>
                     <tr>
                         <td>Nilai UAS</td>
-                        <td> : <input type="number" name="nilai_uas" size="50"></td>
+                        <td> : <input type="number" name="nilai_uas" id="nilai_uas" size="50"></td>
                     </tr>
                     <tr>
                         <td>Total Nilai</td>
-                        <td> : <input type="number" name="total_nilai" size="50"></td>
+                        <td> : <input type="number" name="total_nilai" id="total_nilai" size="50" readonly></td>
                     </tr>
                     <tr>
                         <td>Nilai Absen</td>
@@ -97,32 +97,32 @@
                     <tr>
                     <tr>
                         <td>Grade 1</td>
-                        <td> : <input type="number" name="grade1" size="50"></td>
+                        <td> : <input type="text" name="grade1" size="50"></td>
                     </tr>
                     <tr>
                         <td>Grade 2</td>                  
-                        <td> : <input type="number" name="grade2" size="50"></td>
+                        <td> : <input type="text" name="grade2" size="50"></td>
                     </tr>
                     <tr>
                         <td>Grade 3</td>
-                        <td> : <input type="number" name="grade3" size="50"></td>
+                        <td> : <input type="text" name="grade3" size="50"></td>
                     </tr>
                     <tr>
                         <td>Grade 4</td>
-                        <td> : <input type="number" name="grade4" size="50"></td>
+                        <td> : <input type="text" name="grade4" size="50"></td>
                     </tr>
                     <tr>
                     <tr>
                         <td>Grade 5</td>
-                        <td> : <input type="number" name="grade5" size="50"></td>
+                        <td> : <input type="text" name="grade5" size="50"></td>
                     </tr>
                     <tr>
                         <td>Grade 6</td>
-                        <td> : <input type="number" name="grade6" size="50"></td>
+                        <td> : <input type="text" name="grade6" size="50"></td>
                     </tr>
                     <tr>
                         <td>Grade Akhir</td>
-                        <td> : <input type="number" name="grade_akhir" size="50"></td>
+                        <td> : <input type="text" name="grade_akhir" size="50"></td>
                     </tr>
                     <tr>
                         <td>Nilai Temu</td>
@@ -134,7 +134,7 @@
                     </tr>
                     <tr>
                         <td>Nilai Mutu</td>
-                        <td> : <input type="number" name="nilai_mutu" size="50"></td>
+                        <td> : <input type="text" name="nilai_mutu" size="50"></td>
                     </tr>
                     <tr>
                         <td>Total Pra HER</td>
@@ -142,7 +142,7 @@
                     </tr>
                     <tr>
                         <td>Grade Pra HER</td>
-                        <td> : <input type="number" name="grade_pra_her" size="50"></td>
+                        <td> : <input type="text" name="grade_pra_her" size="50"></td>
                     </tr>
                     <tr>
                     <tr>
@@ -168,11 +168,11 @@
                     </tr>
                     <tr>
                         <td>Unggulan</td>
-                        <td> : <input type="number" name="unggulan" size="50"></td>
+                        <td> : <input type="text" name="unggulan" size="50"></td>
                     </tr>
                     <tr>
                         <td>Nilai HER</td>
-                        <td> : <input type="number" name="nilai_her" size="50"></td>
+                        <td> : <input type="text" name="nilai_her" size="50"></td>
                     </tr>
                     <tr>
                         <td>Cek</td>
@@ -197,6 +197,6 @@
 
 
     </div>
-
+    <script src="<?php echo base_url('assets/js/script.js'); ?>"></script>
 
 </body>

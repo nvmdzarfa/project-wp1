@@ -354,6 +354,7 @@ body {
 	background-color: var(--color2);
 	padding: 15px;
 	overflow-x: auto;
+	overflow-y: auto;
 	margin: auto;
 	border-radius: 10px;
 	border-collapse: collapse;

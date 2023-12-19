@@ -42,8 +42,8 @@ class MasterModel extends CI_Model {
 
         if($keyword !== null) {
             $keyword = $this->db->escape_like_str($keyword);
-            $this->db->like('nim', $keyword);
-            $this->db->or_like('nim_x', $keyword);
+            $this->db->like('kel_praktek', $keyword);
+            $this->db->or_like('kel_praktek_x', $keyword);
         } else  {
             return array();
         }

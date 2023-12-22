@@ -40,7 +40,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="login">
+                    <a href="auth/logout">
                         <span class="icon">
                             <i class='bx bx-log-out' ></i>
                         </span>

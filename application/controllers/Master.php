@@ -202,6 +202,7 @@
             $this->load->view('search', $data);
         }
 
+        // download
         public function download($nim) {
             $data['nilai'] = $this->db->get_where('nilai', ['nim' => $nim])->result();
             $nilai = $data['nilai'];
@@ -240,7 +241,7 @@
                 'Minat', 
                 'Periode Dikti'
             );
-            fputcsv($file, $header);
+            fputcsv($file, $header, ';');
 
             foreach ($nilai as $row) {
                 $newRow = array(
@@ -276,7 +277,7 @@
                     $row->minat,
                     $row->periode_dikti
                 );
-                fputcsv($file, $newRow);
+                fputcsv($file, $newRow, ';');
             }
 
             $nama_file = 'Rekap Nilai.csv';

@@ -280,7 +280,7 @@
                 fputcsv($file, $newRow, ';');
             }
 
-            $nama_file = 'Rekap Nilai.csv';
+            $nama_file = 'Rekap Nilai '. $nim . '.csv';
 
             header("Content-type: application/csv");
             header("Content-Disposition: attachment; filename=".$nama_file);
